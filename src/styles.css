@@ -1,0 +1,192 @@
+
+:root{
+  --violeta:#5c00ae;
+  --amarillo: #ffd500;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+
+  }
+  a:hover{
+    color: var(--amarillo);
+    transition: 0.4 ease-in all;
+  }
+
+  span, strong, h3, h4, h5, h6{
+    color: var(--violeta);
+  }
+  
+  p {
+    line-height: 1.7;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    line-height: 2.2;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  
+
+
+/* Navbar */
+  .Navbar{
+    background-color: var(--violeta);
+    border: 2px solid var(--amarillo);
+    height: auto;
+    padding: 1.5rem;
+  }
+  .Navbar, .nav-link{
+    font-size: 1.5rem;
+    color: var(--amarillo);
+  }
+  .nav-home :hover{
+    color: var(--amarillo);
+    transition: all 0.4 ease-in;
+  }
+  .nav-logo{
+    height: 12rem;
+    width: 12rem;
+    border-radius: 100%;
+  }
+  
+  
+  /* HomeScreen */
+
+  .home{
+    padding: 1.rem;
+  }
+
+  .pedidos{
+    padding: 1rem;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .title{
+    padding: 2rem 4rem;
+  }
+  .pedido-form{
+    border: 2px solid var(--violeta);
+    padding: 3rem 5rem;
+  }
+
+  .btn-pedido{
+    border: 0.5px solid var(--violeta);
+    color: var(--violeta);
+
+  }
+  .btn-pedido:hover{
+    background-color: var(--amarillo);
+    color: var(--violeta);
+    border: 1px solid var(--violeta);
+  }
+
+  /* Login */
+  .login{
+    padding: 1rem;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .login-form{
+    border: 2px solid var(--violeta);
+    padding: 3rem 5rem;
+  }
+
+
+  /* Admin screen */
+
+  .admin{
+    height: 100vh;
+    padding: 1rem;
+    justify-content: space-between;
+    text-align: center; 
+  }
+
+  .admin-row{
+    justify-content: space-between;
+  }
+
+
+  /* Producto */
+
+  .producto{
+    padding: 1rem;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  
+  
+  .producto-card{
+    background-color: #fafafa;
+    border: 1px solid var(--violeta);
+    border-radius: 1.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+    padding: 1.5rem; 
+    text-align: center;
+    
+       
+  }
+  .producto-nombre{
+    background-color: var(--amarillo);
+    border-radius: 5rem;
+    justify-content: center;
+    text-align: center; 
+  }
+  .row-producto{
+    justify-content: center;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+  .descripcion{
+    color: #000;
+  }
+  
+
+  /* Footer */
+
+  #copy{
+    color: var(--amarillo);
+  }
+  .nombre-footer{
+    color: var(--amarillo);
+  }
+  .footer{
+    background-color: var(--violeta);
+    border: 2px solid var(--amarillo);
+    color: var(--amarillo);
+    justify-content: space-around;
+    padding: 2rem;
+  }
+  .footer-row{
+    justify-content: space-around;
+    text-align: center;
+  } 
+
+  .redes-footer{
+    margin-right: 0.5rem;
+  }
+
