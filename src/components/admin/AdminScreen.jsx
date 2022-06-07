@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import{useDispatch} from 'react-redux'
+import{useDispatch, useSelector} from 'react-redux'
 
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../../features/auth/authSlice';
@@ -12,6 +12,11 @@ export const AdminScreen = () => {
 
     const dispatch = useDispatch();
 
+    const {user} = useSelector((state)=>state.auth)
+
+    useEffect(()=>{
+
+    }, [user, navigate,dispatch])
 
     const cerrarSesion = ()=>{
         dispatch(logOut());
@@ -27,7 +32,7 @@ export const AdminScreen = () => {
                 <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/producto')}}>Crear Producto</button>
             </div>
             <div className='col-sm-3'>
-                <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('admin/producto/detalle')}}>Modificar Producto</button>
+                <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/producto/detalle')}}>Modificar Producto</button>
             </div>
             <div className='col-sm-3'>
                 <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/pedido')}}>Ver Pedidos</button>

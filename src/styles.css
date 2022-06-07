@@ -164,7 +164,21 @@
   .descripcion{
     color: #000;
   }
+  .lista-productos-admin{
+    border: 1px solid var(--violeta);
+    border-radius: 2rem;
+    margin: 1.5rem 0;
+    width: fit-content;
+    padding: 1rem;
+  }
+  .productos-admin{
+    text-align: center;
+    justify-content:center;
+    padding: 1rem;
+    
+
   
+  }
 
   /* Footer */
 
