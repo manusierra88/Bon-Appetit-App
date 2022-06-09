@@ -43,6 +43,26 @@ export const obtenerProductos = createAsyncThunk('ver/producto', async (thunkAPI
     }
 })
 
+export const obtenerProdcutoPorId = createAsyncThunk('producto/id', async(id,thunkAPI)=>{
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+
+        return await productoService.getById(id, token);
+
+        
+    } catch (error) {
+
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message) || error.message
+            || error.toString()
+        return thunkAPI.rejectWithValue(message)
+
+    
+        
+    }
+})
+
 export const modificarProducto = createAsyncThunk('modificar/prodcuto', async (dataModificada,id,thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
@@ -108,6 +128,19 @@ export const productoSlice = createSlice({
                 state.productos.push(action.payload);
             })
             .addCase(modificarProducto.rejected, (state,action)=>{
+                state.isLoading = false
+                state.isError = true;
+                state.msg = action.payload;
+            })
+            .addCase(obtenerProdcutoPorId.pending, (state)=>{
+                state.isLoading = true;
+            })
+            .addCase(obtenerProdcutoPorId.fulfilled, (state,action)=>{
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.productos = action.payload;
+            })
+            .addCase(obtenerProdcutoPorId.rejected, (state,action)=>{
                 state.isLoading = false
                 state.isError = true;
                 state.msg = action.payload;

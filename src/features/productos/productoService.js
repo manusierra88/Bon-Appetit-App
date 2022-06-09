@@ -35,8 +35,18 @@ const getProductos = async ()=>{
         return response;
 }
 
+const getById = async (id, token)=>{
+    const response = await fetch(`${url}/${id}`, {
+        headers:{
+            token : token
+        },
+    }).then(response => response.json());
+
+    return response;
+}
+
 const putProducto = async (dataModificada,id, token)=>{
-    const response = await fetch(url+`${id}`,{
+    const response = await fetch(url+`/${id}`,{
         method : 'PUT',
         headers:{
             token : token,
@@ -53,6 +63,7 @@ const putProducto = async (dataModificada,id, token)=>{
 const productoService = {
     postProducto,
     getProductos,
+    getById,
     putProducto
 }
 
