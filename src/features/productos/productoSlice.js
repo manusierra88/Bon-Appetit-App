@@ -8,6 +8,7 @@ const initialState = {
     isError: false,
     isSuccess: false,
     isLoading: false,
+    producto : {},
     msg: ''
 }
 
@@ -138,7 +139,7 @@ export const productoSlice = createSlice({
             .addCase(obtenerProdcutoPorId.fulfilled, (state,action)=>{
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.productos = action.payload;
+                state.producto = action.payload;
             })
             .addCase(obtenerProdcutoPorId.rejected, (state,action)=>{
                 state.isLoading = false
