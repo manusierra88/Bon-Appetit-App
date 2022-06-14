@@ -7,7 +7,7 @@ import { borrarProducto } from '../../features/productos/productoSlice';
 export const Producto = (producto) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { user } = useSelector(state => state.auth.user);
+  const  user  = useSelector(state => state.auth.user);
 
   console.log(producto)
   const deleteItem = () => {
@@ -31,7 +31,7 @@ export const Producto = (producto) => {
         <div className='col-sm-5 producto-descripcion'>
           <p className='descripcion'>{producto.descripcion}</p>
           {producto.disponible === true
-            ? (<strong>Dsiponible</strong>)
+            ? (<strong>Disponible</strong>)
             : (<strong>Sin Stock</strong>)}
         </div>
 
