@@ -3,7 +3,8 @@ import React, { useEffect } from 'react'
 import{useDispatch, useSelector} from 'react-redux'
 
 import { useNavigate } from 'react-router-dom';
-import { logOut } from '../../features/auth/authSlice';
+import { logOut, reset } from '../../features/auth/authSlice';
+
 import '../../styles.css';
 
 export const AdminScreen = () => {
@@ -20,7 +21,8 @@ export const AdminScreen = () => {
 
     const cerrarSesion = ()=>{
         dispatch(logOut());
-        navigate('/')
+        dispatch(reset());
+        navigate('/',{replace:true})
     }
     
 
@@ -30,9 +32,6 @@ export const AdminScreen = () => {
         <div className='row admin-row'>
             <div className='col-sm-3'>
                 <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/producto')}}>Crear Producto</button>
-            </div>
-            <div className='col-sm-3'>
-                <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/producto/detalle')}}>Modificar Producto</button>
             </div>
             <div className='col-sm-3'>
                 <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/pedido')}}>Ver Pedidos</button>

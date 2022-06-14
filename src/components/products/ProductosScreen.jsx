@@ -2,6 +2,7 @@ import React from 'react'
 import { ProductosList } from './ProductosList'
 
 export const ProductosScreen = () => {
+  
   return (
     <div className='producto'>
      

@@ -5,7 +5,7 @@ import { Producto } from './Producto';
 
 export const ProductosList = () => {
     const { productos } = useSelector((state) => state.producto);
-    console.log(productos);
+
     const dispatch = useDispatch();
     useEffect(() => {
 

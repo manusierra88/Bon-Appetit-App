@@ -6,12 +6,8 @@ import {useForm} from '../../hooks/useForm'
 
 export const ProductoScreenCreate = () => {
   
-  const [productoData, handleInputchange] = useForm({
-    nombre: '',
-    precio: 0,
-    descripcion: '',
-  });
-  const {nombre, precio, descripcion}= productoData;
+  const [productoData, handleInputchange] = useForm({});
+  const {nombre, precio, descripcion} = productoData;
 
 
 
@@ -24,9 +20,9 @@ export const ProductoScreenCreate = () => {
 
       
     
-  },[producto, navigate])
+  },[producto, navigate, dispatch])
 
-
+  console.log(producto);
 
   const onSubmit = (e)=>{
     e.preventDefault();

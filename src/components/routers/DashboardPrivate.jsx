@@ -2,8 +2,6 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AdminScreen } from '../admin/AdminScreen'
 import { VerPedidos } from '../pedidos/VerPedidos'
-import { ItemEdicion } from '../products/ItemEdicion'
-import { ProductoAdmin } from '../products/ProductoAdmin'
 import { ProductoScreenCreate } from '../products/ProductoScreenCreate'
 import { Footer } from '../ui/Footer'
 import { Navbar } from '../ui/Navbar'
@@ -18,8 +16,8 @@ export const DashboardPrivate = () => {
                     <Route path='/' element={<AdminScreen />} />
                     <Route path='/producto' element={<ProductoScreenCreate />} />
                     <Route path='/pedido' element={<VerPedidos />} />
-                    <Route path='/producto/detalle' element={<ProductoAdmin />}/>
-                    <Route path='/producto/detalle/:id' element={<ItemEdicion/>}/>
+                    
+                    
                 </Routes>
             </div>
             <Footer/>

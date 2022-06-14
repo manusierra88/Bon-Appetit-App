@@ -5,10 +5,10 @@ import productoService from "./productoService";
 
 const initialState = {
     productos: [],
+    producto: {},
     isError: false,
     isSuccess: false,
     isLoading: false,
-    producto : {},
     msg: ''
 }
 
@@ -38,19 +38,19 @@ export const obtenerProductos = createAsyncThunk('ver/producto', async (thunkAPI
     } catch (error) {
         const message = (error.response
             && error.response.data
-            && error.response.data.message) || error.message 
+            && error.response.data.message) || error.message
             || error.toString()
         return thunkAPI.rejectWithValue(message);
     }
 })
 
-export const obtenerProdcutoPorId = createAsyncThunk('producto/id', async(id,thunkAPI)=>{
+export const obtenerProdcutoPorId = createAsyncThunk('producto/id', async (id, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
 
         return await productoService.getById(id, token);
 
-        
+
     } catch (error) {
 
         const message = (error.response
@@ -59,38 +59,29 @@ export const obtenerProdcutoPorId = createAsyncThunk('producto/id', async(id,thu
             || error.toString()
         return thunkAPI.rejectWithValue(message)
 
-    
-        
+
+
     }
 })
 
-export const modificarProducto = createAsyncThunk('modificar/prodcuto', async (dataModificada,id,thunkAPI) => {
+export const borrarProducto = createAsyncThunk('borrar/producto', async (id, thunkAPI)=>{
     try {
-        const token = thunkAPI.getState().auth.user.token;
-
-        return await productoService.putProducto(dataModificada,id ,token);
-
+        const token = thunkAPI.getState().auth.user.token
+        return await productoService.deletItem(id,token)
+        
     } catch (error) {
-        const message = (error.response
-            && error.response.data
-            && error.response.data.message) || error.message
-            || error.toString()
-        return thunkAPI.rejectWithValue(message)
-
+        return thunkAPI.rejectWithValue(error.data);
     }
-
 })
+
+
 
 export const productoSlice = createSlice({
     name: 'producto',
     initialState,
     reducers: {
-        reset: (state) => {
-            state.isError = false
-            state.isLoading = false
-            state.isSuccess = false
-            state.msg = ''
-        },
+        reset: (state) => initialState
+
     },
     extraReducers: (builder) => {
         builder
@@ -120,31 +111,22 @@ export const productoSlice = createSlice({
                 state.isLoading = false;
                 state.msg = action.payload;
             })
-            .addCase(modificarProducto.pending, (state)=>{
+            .addCase(obtenerProdcutoPorId.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(modificarProducto.fulfilled, (state,action)=>{
-                state.isLoading = false;
-                state.isSuccess = true;
-                state.productos.push(action.payload);
-            })
-            .addCase(modificarProducto.rejected, (state,action)=>{
-                state.isLoading = false
-                state.isError = true;
-                state.msg = action.payload;
-            })
-            .addCase(obtenerProdcutoPorId.pending, (state)=>{
-                state.isLoading = true;
-            })
-            .addCase(obtenerProdcutoPorId.fulfilled, (state,action)=>{
+            .addCase(obtenerProdcutoPorId.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
                 state.producto = action.payload;
             })
-            .addCase(obtenerProdcutoPorId.rejected, (state,action)=>{
+            .addCase(obtenerProdcutoPorId.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true;
                 state.msg = action.payload;
+            })
+            .addCase(borrarProducto.fulfilled, (state,action)=>{
+                state.productos = state.productos.filter(
+                    producto=> producto.id !== action.payload.id)
             })
     }
 
