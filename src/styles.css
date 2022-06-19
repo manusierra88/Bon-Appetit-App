@@ -49,6 +49,16 @@
     margin-bottom: 0.8rem;
   }
   
+  .input-form{
+    display: block;
+    border: solid 1px var(--violeta);
+    border-radius: 0.5rem;
+    width: auto;
+    min-width: 40rem;
+    height: 2rem;
+    margin: 1.5rem 0;;
+    padding: 1rem;
+  }
 
 
 /* Navbar */

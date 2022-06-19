@@ -13,9 +13,21 @@ const crearPedido = async (pedidoData)=>{
 }
 
 
+const obtenerPedidos = async (token) => {
+   const response = await fetch(url,{
+    headers:{
+        'Content-Type': 'application/json',
+        'token': token
+    }
+   }).then(response => response.json())
+   return response;
+}
+
+
 
 const pedidoService = {
     crearPedido,
+    obtenerPedidos
 }
 
 export default pedidoService;

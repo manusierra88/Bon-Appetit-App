@@ -9,7 +9,7 @@ export const Producto = (producto) => {
   const navigate = useNavigate()
   const  user  = useSelector(state => state.auth.user);
 
-  console.log(producto)
+
   const deleteItem = () => {
     dispatch(borrarProducto(producto._id))
     navigate('/admin')

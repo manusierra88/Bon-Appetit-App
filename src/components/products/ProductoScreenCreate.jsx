@@ -22,7 +22,7 @@ export const ProductoScreenCreate = () => {
     
   },[producto, navigate, dispatch])
 
-  console.log(producto);
+
 
   const onSubmit = (e)=>{
     e.preventDefault();

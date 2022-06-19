@@ -38,7 +38,7 @@ export const PedidosScreen = () => {
   }
 
 
-  console.log(producto)
+  
 
   
 
