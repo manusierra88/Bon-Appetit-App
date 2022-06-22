@@ -58,8 +58,8 @@ h4 {
 }
 
 img {
-  max-height: 23rem;
-  max-width: 23rem;
+  max-height: auto;
+  max-width: 70%;
   padding: 0.5rem;
 }
 
@@ -322,9 +322,10 @@ img {
     align-items: center;
     flex-flow: column wrap;
     
+    
   }
   .img-home{
-    width: 11rem;
-    height: 11rem;
+    width: 100%;
+    height: auto;
   }
 }
