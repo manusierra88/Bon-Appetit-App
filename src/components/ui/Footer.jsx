@@ -13,7 +13,7 @@ export const Footer = () => {
           <strong id='copy'> 2022© </strong>
         </div>
         <div className='col-md col-footer'>
-          <h5>Contacto</h5>
+          <h5 className='h5-footer'>Contacto</h5>
           <p>Telefono:  35803029329429</p>
           <a className='anchor-footer' target={'_blank'} href='https://www.instagram.com/bon__appetit.pastas/' rel='noreferrer'>
               Instagram  <i className='fa-brands fa-instagram'>

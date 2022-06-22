@@ -36,9 +36,34 @@ export const verPedidos = createAsyncThunk('ver/pedidos', async (_,thunkAPI) => 
     }
 
 }
-
-
 )
+export const editarPedido = createAsyncThunk ('editar/pedido', async(id,thunkAPI, data)=>{
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await pedidoService.editarPedido(token, id, data)
+    } catch (error) {
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message) || error.message
+            || error.toString()
+        return thunkAPI.rejectWithValue(message);
+
+    }
+})
+
+export const borrarPedido = createAsyncThunk('del/pedido', async(id,thunkAPI)=>{
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await pedidoService.deletePedido(id, token)
+    } catch (error) {
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message) || error.message
+            || error.toString()
+        return thunkAPI.rejectWithValue(message);
+ 
+    }
+})
 
 
 export const pedidoSlice = createSlice({
@@ -73,6 +98,19 @@ export const pedidoSlice = createSlice({
                 state.isError = true;
                 state.isLoading = false;
                 state.message = action.payload;
+            })
+            .addCase(borrarPedido.pending, (state)=>{
+                state.isLoading = true;
+            })
+            .addCase(borrarPedido.fulfilled, (state,action)=>{
+                state.isSuccess = true;
+                state.pedidos = state.pedidos.filter(
+                    pedido => pedido.id !== action.payload.id
+                )
+            })
+            .addCase(borrarPedido.rejected, (state, action)=>{
+                state.isError = true;
+                state.message = action.payload
             })
     }
 

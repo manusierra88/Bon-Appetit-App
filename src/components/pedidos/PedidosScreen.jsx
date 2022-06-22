@@ -6,44 +6,56 @@ import { obtenerProductos } from '../../features/productos/productoSlice';
 
 
 import '../../styles.css';
+import { toast } from 'react-toastify';
+
+const fecha = new Date()
+const configFecha = { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' }
+const fechaPedido = fecha.toLocaleDateString('es-ES', configFecha);
 
 export const PedidosScreen = () => {
   const { productos } = useSelector((state) => state.producto);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [dataForm, setDataForm] = useState({}) 
-  
-  const {nombre, email, telefono, cantidad} = dataForm;
-  const handleData = (e)=>{
+  const [dataForm, setDataForm] = useState({})
+
+
+
+  const { nombre, email, telefono, cantidad } = dataForm;
+  const handleData = (e) => {
     setDataForm({
       ...dataForm,
       [e.target.name]: e.target.value
     })
   }
-  
+
   const [producto, setProducto] = useState('');
 
 
-  
+
   useEffect(() => {
-    dispatch(obtenerProductos())
-  }, [dispatch])
+    dispatch(obtenerProductos());
+
+  }, [dispatch, nombre, telefono])
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const pedidoData = { nombre, email, telefono, cantidad, producto }
-    dispatch(crearPedido(pedidoData));
-    navigate('/')
 
+
+    if (!nombre || !telefono || !producto || !email || !cantidad) {
+      toast.error('Porfavor complete todos los campos del formulario', { hideProgressBar: true, position: 'top-center' })
+    } else {
+
+      const pedidoData = { nombre, email, telefono, cantidad, producto, fechaPedido }
+      console.log(fecha);
+      dispatch(crearPedido(pedidoData));
+      toast.success('Pedido generado exitosamente,', { hideProgressBar: true, position: 'top-center' })
+      toast.info('Nos contactaremos con usd. para confirmar la entrega', { hideProgressBar: true, position: 'top-center' })
+      navigate('/')
+    }
   }
+  let fecha = new Date();
+  console.log(fecha);
 
-
-  
-
-  
-
-  
-  
 
   return (
     <div className='container pedidos'>
@@ -76,12 +88,12 @@ export const PedidosScreen = () => {
             onChange={handleData}
             value={telefono}
             autoComplete='off'></input>
-            <select className='form-select mb-4'  onChange={(e)=>{setProducto(e.target.value)}}>
-              <option>Seleccione un producto</option>
-              {productos.map(producto =>(
-                <option key={producto._id} name={'producto'} value={producto.nombre} > {producto.nombre} </option>
-              ))}
-            </select>
+          <select className='form-select mb-4' onChange={(e) => { setProducto(e.target.value) }}>
+            <option>Seleccione un producto</option>
+            {productos.map(producto => (
+              <option key={producto._id} name={'producto'} value={producto.nombre} > {producto.nombre} </option>
+            ))}
+          </select>
 
           {/* Falta generar el select con la opciones para que el cliente elija el producto */}
           <input
@@ -92,7 +104,8 @@ export const PedidosScreen = () => {
             onChange={handleData}
             value={cantidad}
             name='cantidad' ></input>
-          <button className='btn btn-outline-info btn-pedido'>Realizar pedido </button>
+          <button className='btn btn-outline-info btn-pedido mb-2'>Realizar pedido </button>
+          <p> Una vez hecho el pedido nos pondremos en contacto para coordinar la entrega </p>
         </form>
       </div>
     </div>

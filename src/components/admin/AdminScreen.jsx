@@ -31,13 +31,13 @@ export const AdminScreen = () => {
     <div className='container admin'>
         <div className='row admin-row'>
             <div className='col-sm-3'>
-                <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/producto')}}>Crear Producto</button>
+                <button className='btn btn-outline-info btn-pedido mb-2' onClick={()=>{navigate('/admin/producto')}}>Crear Producto</button>
             </div>
             <div className='col-sm-3'>
-                <button className='btn btn-outline-info btn-pedido' onClick={()=>{navigate('/admin/pedido')}}>Ver Pedidos</button>
+                <button className='btn btn-outline-info btn-pedido mb-2' onClick={()=>{navigate('/admin/pedido')}}>Ver Pedidos</button>
             </div>
             <div className='col-sm-3'>
-                <button className='btn btn-outline-info btn-pedido' onClick={cerrarSesion}>Cerrar Sesion</button>
+                <button className='btn btn-outline-info btn-pedido mb-2' onClick={cerrarSesion}>Cerrar Sesion</button>
             </div>
         </div>
     </div>

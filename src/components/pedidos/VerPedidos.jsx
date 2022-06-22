@@ -13,14 +13,15 @@ export const VerPedidos = () => {
   }, [dispatch])
   
   return (
-    <div className='container login'>
+    <div className='container login '>
+      <h3> Lista de pedidos </h3>
 
       <div className='row'>
-        <h3> Lista de pedidos </h3>
-
+        <div className='pedido-container'>
+        {pedidos.map(pedido => (<PedidoDetalle key={pedido._id} {...pedido} />))}
+        </div>
       </div>
         
-        {pedidos.map(pedido => (<PedidoDetalle key={pedido._id} {...pedido} />))}
     </div>
   )
 }

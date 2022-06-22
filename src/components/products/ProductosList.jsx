@@ -13,16 +13,12 @@ export const ProductosList = () => {
 
     }, [dispatch])
     return (
-        <div className='row producto-list'>
-            <div className='container'>
-                <div className='row row-col-3'>
-
-                    {productos.map(producto =>
-                        (<Producto key={producto._id} {...producto} />))
-                    }
-
-                </div>
-            </div>
+        <div className='producto-list '>
+            {
+                productos.map(producto =>
+                    (<Producto key={producto._id} {...producto} />))
+            }
         </div>
+
     )
 }
