@@ -44,17 +44,22 @@ export const PedidosScreen = () => {
     if (!nombre || !telefono || !producto || !email || !cantidad) {
       toast.error('Porfavor complete todos los campos del formulario', { hideProgressBar: true, position: 'top-center' })
     } else {
+      try {
+        const pedidoData = { nombre, email, telefono, cantidad, producto }
 
-      const pedidoData = { nombre, email, telefono, cantidad, producto, fechaPedido }
-      console.log(fecha);
-      dispatch(crearPedido(pedidoData));
-      toast.success('Pedido generado exitosamente,', { hideProgressBar: true, position: 'top-center' })
-      toast.info('Nos contactaremos con usd. para confirmar la entrega', { hideProgressBar: true, position: 'top-center' })
-      navigate('/')
+        dispatch(crearPedido(pedidoData));
+        toast.success('Pedido generado exitosamente,', { hideProgressBar: true, position: 'top-center' })
+        toast.info('Nos contactaremos con usd. para confirmar la entrega', { hideProgressBar: true, position: 'top-center' })
+        navigate('/')
+
+      } catch (error) {
+        toast.error('Algo ocurrió, intentá realizar el pedido nuevamente más tarde',{hideProgressBar:true, position:'top-center'})
+        toast.info(error,{hideProgressBar:true, position:'top-center'})
+        navigate('/',{replace:true});
+      }
+
     }
   }
-  let fecha = new Date();
-  console.log(fecha);
 
 
   return (

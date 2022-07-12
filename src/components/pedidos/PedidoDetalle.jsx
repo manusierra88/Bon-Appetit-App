@@ -8,6 +8,11 @@ export const PedidoDetalle = (pedido) => {
 
   
   
+
+  
+
+  
+  
   return (
     <div className='pedido-detalle col-3 '>
         
@@ -16,6 +21,7 @@ export const PedidoDetalle = (pedido) => {
         <p>Email: {pedido.email}</p>
         <p>Producto: {pedido.producto} </p>
         <p>Porciones: {pedido.cantidad}</p>
+        <p>Realizado:{pedido.fechaPedido}</p>
         {pedido.estado === true && <p className="text-muted">Pedido pendiente</p>}
         {pedido.estado === false && <p className="text-muted">Pedido listo para entregar</p>}
         <button 

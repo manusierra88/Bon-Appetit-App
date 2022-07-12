@@ -57,11 +57,7 @@ h4 {
   margin-bottom: 0.8rem;
 }
 
-img {
-  max-height: auto;
-  max-width: 70%;
-  padding: 0.5rem;
-}
+
 
 .input-form {
   display: block;
@@ -216,9 +212,13 @@ img {
 }
 
 .img-home {
+  max-height: auto;
+  max-width: 80%;
+  padding: 0.5rem;
   border: 1px solid var(--amarillo);
   border-radius: 10rem;
 }
+ 
 .h4-contenido{
   font-size: 1.8rem;
 }

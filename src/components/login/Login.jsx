@@ -33,7 +33,7 @@ export const Login = () => {
     }
 
     if(isSuccess || user){
-        navigate('/admin')
+        navigate('/admin',{replace:true})
     }
 
     dispatch(reset())
