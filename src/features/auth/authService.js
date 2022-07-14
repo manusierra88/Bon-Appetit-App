@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const url = 'http://localhost:5000/api/auth/login'
+const url = 'https://bonappetitpastas.herokuapp.com/api/auth/login'
 
 
 const login = async (userData) => {

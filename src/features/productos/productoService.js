@@ -1,6 +1,6 @@
 // import axios from "axios";
 
-const url = 'http://localhost:5000/api/productos';
+const url = 'https://bonappetitpastas.herokuapp.com/api/productos';
 
 
 const postProducto = async (productoData, token) => {

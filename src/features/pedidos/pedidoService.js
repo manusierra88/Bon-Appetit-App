@@ -1,5 +1,5 @@
 
-const url = 'http://localhost:5000/api/pedidos';
+const url = 'https://bonappetitpastas.herokuapp.com/api/pedidos';
 
 const crearPedido = async (pedidoData)=>{
     const response = await fetch(url,{
