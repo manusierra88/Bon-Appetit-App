@@ -7,7 +7,7 @@ import { HashRouter } from 'react-router-dom'
 
 export const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
         <Routes>
           <Route path='/*' element={<Dashboard/>}/>
           <Route path='/admin/*' element={
@@ -16,6 +16,6 @@ export const AppRouter = () => {
             </PrivateRoute>
           } />
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
