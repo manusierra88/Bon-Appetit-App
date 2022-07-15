@@ -14,7 +14,7 @@ export const Footer = () => {
         </div>
         <div className='col-md col-footer'>
           <h5 className='h5-footer'>Contacto</h5>
-          <p>Telefono:  35803029329429</p>
+          <p>Telefono:  3585610050</p>
           <a className='anchor-footer' target={'_blank'} href='https://www.instagram.com/bon__appetit.pastas/' rel='noreferrer'>
               Instagram  <i className='fa-brands fa-instagram'>
               </i>
