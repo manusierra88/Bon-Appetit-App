@@ -213,7 +213,7 @@ h4 {
 
 .img-home {
   max-height: auto;
-  max-width: 80%;
+  max-width: 100%;
   padding: 0.5rem;
   border: 1px solid var(--amarillo);
   border-radius: 10rem;
@@ -322,14 +322,15 @@ h4 {
 
 @media (max-width: 700px){
   .home-contenido{
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-flow: column wrap;
-    
-    
+    margin: auto;
+    margin-bottom: 0.5rem;
+    width: auto;
   }
   .img-home{
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 }
